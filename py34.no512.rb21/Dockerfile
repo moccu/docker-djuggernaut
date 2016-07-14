@@ -26,7 +26,6 @@ RUN apt-get update \
 		zlib1g-dev \
 		libxml2-dev \
 		libxslt1-dev \
-	&& apt-get purge -y python.* \
 	&& apt-get autoremove -y \
 	&& apt-get clean all \
 	&& rm -rf /var/lib/apt/lists/*
