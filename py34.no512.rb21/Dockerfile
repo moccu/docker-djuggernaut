@@ -26,6 +26,8 @@ RUN apt-get update \
 		zlib1g-dev \
 		libxml2-dev \
 		libxslt1-dev \
+		fontforge \
+		ttfautohint \
 	&& apt-get autoremove -y \
 	&& apt-get clean all \
 	&& rm -rf /var/lib/apt/lists/*
