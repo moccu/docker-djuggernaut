@@ -3,7 +3,7 @@ FROM buildpack-deps:jessie
 
 ENV NODE_VERSION="5.12.0" \
 	PHANTOMJS_VERSION="2.1.1" \
-	PYTHON_VERSION="2.7.11"
+	PYTHON_VERSION="2.7.12"
 
 LABEL com.moccu.type="constructor" \
 	com.moccu.version.node="${NODE_VERSION}" \
@@ -94,7 +94,7 @@ RUN set -ex \
 	&& curl -fSL "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" -o python.tar.xz \
 	&& curl -fSL "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc" -o python.tar.xz.asc \
 	&& export GNUPGHOME="$(mktemp -d)" \
-	&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "97FC712E4C024BBEA48A61ED3A5CA953F73C700D" \
+	&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "C01E1CAD5EA2C4F0B8E3571504C367C218ADD4FF" \
 	&& gpg --batch --verify python.tar.xz.asc python.tar.xz \
 	&& rm -r "$GNUPGHOME" python.tar.xz.asc \
 	&& mkdir -p /usr/src/python \
@@ -105,7 +105,8 @@ RUN set -ex \
 	&& make -j$(nproc) \
 	&& make install \
 	&& ldconfig \
-	&& pip3 install --no-cache-dir --upgrade --ignore-installed pip setuptools wheel \
+	&& curl -fSL 'https://bootstrap.pypa.io/get-pip.py' | python2 \
+	&& pip install --no-cache-dir --upgrade --ignore-installed pip setuptools wheel \
 	&& find /usr/local -depth \
 		\( \
 			\( -type d -a -name test -o -name tests \) \
@@ -113,12 +114,6 @@ RUN set -ex \
 			\( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
 		\) -exec rm -rf '{}' + \
 	&& rm -rf /usr/src/python ~/.cache
-
-RUN cd /usr/local/bin \
-	&& ln -s idle3 idle \
-	&& ln -s pydoc3 pydoc \
-	&& ln -s python3 python \
-	&& ln -s python3-config python-config
 
 
 CMD ["bash"]
