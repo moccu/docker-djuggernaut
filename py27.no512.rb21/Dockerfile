@@ -5,7 +5,7 @@ ENV NODE_VERSION="5.12.0" \
 	PHANTOMJS_VERSION="2.1.1" \
 	PYTHON_VERSION="2.7.12"
 
-LABEL com.moccu.type="constructor" \
+LABEL com.moccu.type="djuggernaut" \
 	com.moccu.version.node="${NODE_VERSION}" \
 	com.moccu.version.phantom="${PHANTOMJS_VERSION}" \
 	com.moccu.version.python="${PYTHON_VERSION}"

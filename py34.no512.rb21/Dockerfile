@@ -3,9 +3,9 @@ FROM buildpack-deps:jessie
 
 ENV NODE_VERSION="5.12.0" \
 	PHANTOMJS_VERSION="2.1.1" \
-	PYTHON_VERSION="3.4.4"
+	PYTHON_VERSION="3.4.5"
 
-LABEL com.moccu.type="constructor" \
+LABEL com.moccu.type="djuggernaut" \
 	com.moccu.version.node="${NODE_VERSION}" \
 	com.moccu.version.phantom="${PHANTOMJS_VERSION}" \
 	com.moccu.version.python="${PYTHON_VERSION}"
@@ -119,7 +119,8 @@ RUN cd /usr/local/bin \
 	&& ln -s idle3 idle \
 	&& ln -s pydoc3 pydoc \
 	&& ln -s python3 python \
-	&& ln -s python3-config python-config
+	&& ln -s python3-config python-config \
+	&& ln -s pip3 pip
 
 
 CMD ["bash"]
