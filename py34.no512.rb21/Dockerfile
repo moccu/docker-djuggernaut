@@ -119,8 +119,7 @@ RUN cd /usr/local/bin \
 	&& ln -s idle3 idle \
 	&& ln -s pydoc3 pydoc \
 	&& ln -s python3 python \
-	&& ln -s python3-config python-config \
-	&& ln -s pip3 pip
+	&& ln -s python3-config python-config
 
 
 CMD ["bash"]
