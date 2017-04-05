@@ -12,6 +12,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
         gettext \
         gcc \
         libpq-dev \
+        libjpeg62-turbo-dev \
         graphicsmagick \
     && rm -rf /var/lib/apt/lists/*
 

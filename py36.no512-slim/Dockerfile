@@ -18,6 +18,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
         gcc \
         g++ \
         libpq-dev \
+        libjpeg62-turbo-dev \
         python2.7-minimal \
         xz-utils \
         libfreetype6 \
