@@ -2,7 +2,7 @@ FROM buildpack-deps:jessie
 
 
 ENV NODE_VERSION="5.12.0" \
-	PHANTOMJS_VERSION="2.1.1" \
+	PHANTOMJS_VERSION="2.1.14" \
 	PYTHON_VERSION="2.7.13"
 
 LABEL com.moccu.type="djuggernaut" \
@@ -44,11 +44,11 @@ ENV LANG=en_US.UTF-8
 # Todo: Validate hash
 
 RUN mkdir -p /srv/var \
-	&& wget -q --no-check-certificate -O /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 \
-		https://github.com/paladox/phantomjs/releases/download/2.1.7/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 \
-	&& tar -xjf /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C /tmp \
-	&& rm -f /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 \
-	&& mv /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/ /srv/var/phantomjs \
+	&& wget -q -O /tmp/phantomjs-$PHANTOMJS_VERSION.tar.gz \
+		https://github.com/paladox/phantomjs/archive/$PHANTOMJS_VERSION.tar.gz \
+	&& tar -xzf /tmp/phantomjs-$PHANTOMJS_VERSION.tar.gz -C /tmp \
+	&& rm -f /tmp/phantomjs-$PHANTOMJS_VERSION.tar.gz \
+	&& mv /tmp/phantomjs-$PHANTOMJS_VERSION/ /srv/var/phantomjs \
 	&& ln -s /srv/var/phantomjs/bin/phantomjs /usr/bin/phantomjs
 
 
