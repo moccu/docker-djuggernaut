@@ -18,6 +18,9 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen \
-    && update-locale LANG=en_US.UTF-8
+    && update-locale LANG=en_US.UTF-8 \
+    && echo "font/woff					woff" >> /etc/mime.types \
+    && echo "font/woff2					woff2" >> /etc/mime.types \
+    && echo "application/manifest+json			webmanifest" >> /etc/mime.types
 
 CMD ["bash"]
