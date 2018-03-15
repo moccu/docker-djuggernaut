@@ -32,6 +32,8 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8
 
+ADD mime.types /etc/mime.types
+
 RUN set -ex \
     && for key in \
         9554F04D7259F04124DE6B476D5A82AC7E37093B \
