@@ -1,6 +1,6 @@
 FROM python:3.5-slim
 
-ENV NODE_VERSION=8.9.0 PHANTOMJS_VERSION=2.1.16
+ENV NODE_VERSION=8.11.3 PHANTOMJS_VERSION=2.1.16
 
 LABEL com.moccu.type="djuggernaut" \
     com.moccu.version.node="${NODE_VERSION}" \
@@ -17,6 +17,8 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends \
         gnupg \
         dirmngr \
         make \
+        zlib1g-dev \
+        libxml2-dev \
         gcc \
         g++ \
         libpq-dev \
